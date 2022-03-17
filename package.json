@@ -1,0 +1,35 @@
+{
+	"name": "mefes",
+	"description": "Modern Esbuild FrontEnd Scaffold",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/0-v-0/mefes"
+	},
+	"keywords": [
+		"esbuild",
+		"stylus"
+	],
+	"packageManager": "pnpm@6.32.3",
+	"browserslist": [
+		"last 10 version",
+		"Chrome >= 84",
+		"not ie > 0",
+		"not opera > 0",
+		"not dead"
+	],
+	"author": {
+		"name": "0-v-0",
+		"email": "kduice@qq.com"
+	},
+	"license": "MIT",
+	"version": "0.0.1",
+	"devDependencies": {
+		"clean-css": "^5.2.4",
+		"esbuild": "^0.14.26",
+		"esbuild-stylus-loader": "^0.4.1",
+		"poststylus": "^1.0.1",
+		"stylus": "^0.56.0",
+		"terser": "^5.12.1"
+	},
+	"main": "index.js"
+}
