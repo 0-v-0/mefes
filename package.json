@@ -10,13 +10,6 @@
 		"stylus"
 	],
 	"packageManager": "pnpm@6.32.3",
-	"browserslist": [
-		"last 10 version",
-		"Chrome >= 84",
-		"not ie > 0",
-		"not opera > 0",
-		"not dead"
-	],
 	"author": {
 		"name": "0-v-0",
 		"email": "kduice@qq.com"

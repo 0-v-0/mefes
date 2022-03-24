@@ -60,7 +60,6 @@ const bundle = (options = {}) => build({
 			target: 'es2020',
 			drop: ['console'],
 			minify: true,
-			write: false,
 			...options.esbuild
 		}),
 			code = {},
@@ -77,13 +76,19 @@ const bundle = (options = {}) => build({
 			text: (await terser(code)).code
 		});
 		return output;
-	}
+	},
+	compileTS = (options = {}) => bundle({
+		target: 'es2020',
+		write: true,
+		...options
+	});
 
 module.exports = {
 	buildCSS,
 	buildJS,
 	bundle,
 	terser,
+	compileTS,
 
 	// TODO: Better report
 	runTask(tasks, defaultTask) {
