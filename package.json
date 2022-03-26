@@ -15,11 +15,13 @@
 		"email": "kduice@qq.com"
 	},
 	"license": "MIT",
-	"version": "0.0.1",
-	"devDependencies": {
-		"clean-css": "^5.2.4",
-		"esbuild": "^0.14.26",
-		"esbuild-stylus-loader": "^0.4.1",
+	"version": "0.0.2",
+	"dependencies": {
+		"esbuild": "^0.14.34",
+		"esbuild-stylus-loader": "^0.4.1"
+	},
+	"optionalDependencies": {
+		"clean-css": "^5.3.0",
 		"poststylus": "^1.0.1",
 		"stylus": "^0.56.0",
 		"terser": "^5.12.1"

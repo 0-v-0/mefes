@@ -4,10 +4,7 @@
 'use strict';
 
 const { build } = require('esbuild'),
-	CleanCSS = require('clean-css'),
 	fs = require('fs/promises'),
-	{ minify } = require('terser'),
-	poststylus = require('poststylus'),
 	{ stylusLoader } = require('esbuild-stylus-loader');
 
 const bundle = (options = {}) => build({
@@ -15,8 +12,9 @@ const bundle = (options = {}) => build({
 	write: false,
 	...options
 }),
-	terser = (code, options = {}) =>
-		minify(code, {
+	terser = (code, options = {}) => {
+		const { minify } = require('terser');
+		return minify(code, {
 			ecma: 2020,
 			compress: {
 				ecma: 2020,
@@ -32,21 +30,24 @@ const bundle = (options = {}) => build({
 				unsafe_undefined: true
 			},
 			...options.terser
-		}),
+		})
+	},
 	buildCSS = (options = {}) => {
 		let opt = {
 			includeCss: true,
 			use: [],
 			...options.stylus
 		};
-		if (options.postcss)
-			opt.use = [poststylus(options.postcss)];
+		if (options.postcss) {
+			const poststylus = require('poststylus');
+			opt.use.push(poststylus(options.postcss));
+		}
 
 		let css = bundle({
 			plugins: [stylusLoader({ stylusOptions: opt })],
 			...options.esbuild
 		}).then(result => result.outputFiles),
-			cleanCSS = options.cleanCSS && new CleanCSS(options.cleanCSS);
+			cleanCSS = options.cleanCSS && new require('clean-css')(options.cleanCSS);
 
 		return cleanCSS ? css.then(files => Promise.all(
 			files.map(file => (/\.css$/.test(file.path) ? {
