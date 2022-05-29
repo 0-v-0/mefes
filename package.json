@@ -9,22 +9,23 @@
 		"esbuild",
 		"stylus"
 	],
-	"packageManager": "pnpm@6.32.3",
+	"packageManager": "pnpm@7.1.7",
 	"author": {
 		"name": "0-v-0",
 		"email": "kduice@qq.com"
 	},
 	"license": "MIT",
-	"version": "0.0.2",
+	"version": "0.0.3",
 	"dependencies": {
-		"esbuild": "^0.14.34",
-		"esbuild-stylus-loader": "^0.4.1"
+		"esbuild": "^0.14.42",
+		"esbuild-stylus-loader": "^0.4.2"
 	},
 	"optionalDependencies": {
 		"clean-css": "^5.3.0",
 		"poststylus": "^1.0.1",
-		"stylus": "^0.56.0",
-		"terser": "^5.12.1"
+		"stylus": "^0.58.0",
+		"terser": "^5.13.1"
 	},
+	"type": "module",
 	"main": "index.js"
 }

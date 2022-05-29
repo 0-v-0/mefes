@@ -1,11 +1,11 @@
 /*!
- * mefes v0.0.1
+ * mefes v0.0.3
  */
 'use strict';
 
-const { build } = require('esbuild'),
-	fs = require('fs/promises'),
-	{ stylusLoader } = require('esbuild-stylus-loader');
+import { build } from 'esbuild';
+import { writeFile } from 'fs/promises';
+import { stylusLoader } from 'esbuild-stylus-loader';
 
 const bundle = (options = {}) => build({
 	bundle: true,
@@ -82,17 +82,9 @@ const bundle = (options = {}) => build({
 		target: 'es2020',
 		write: true,
 		...options
-	});
-
-module.exports = {
-	buildCSS,
-	buildJS,
-	bundle,
-	terser,
-	compileTS,
-
-	// TODO: Better report
-	runTask(tasks, defaultTask) {
+	}),
+	runTask = (tasks, defaultTask) => {
+		// TODO: Better report
 		const start = +new Date,
 			arg = process.argv[2] || defaultTask,
 			task = tasks[arg];
@@ -101,5 +93,14 @@ module.exports = {
 		console.log(`Starting '${arg}' ...`);
 		return task().then(() => console.log(`Finished '${arg}' after ${+new Date - start} ms`));
 	},
-	write: files => files.map(file => fs.writeFile(file.path, file.contents || file.text))
+	write = files => files.map(file => writeFile(file.path, file.contents || file.text));
+
+export {
+	buildCSS,
+	buildJS,
+	bundle,
+	terser,
+	compileTS,
+	runTask,
+	write
 };
