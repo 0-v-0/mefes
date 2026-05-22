@@ -1,31 +1,39 @@
 {
 	"name": "mefes",
-	"description": "Modern Esbuild FrontEnd Scaffold",
+	"description": "Modern Effective FrontEnd Scaffold",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/0-v-0/mefes"
 	},
 	"keywords": [
-		"esbuild",
-		"stylus"
+		"typescript",
+		"vite",
+		"unocss"
 	],
-	"packageManager": "pnpm@7.1.9",
-	"author": {
-		"name": "0-v-0",
-		"email": "kduice@qq.com"
-	},
+	"packageManager": "pnpm@11.0.0",
+	"author": "0-v-0 <kduice@qq.com>",
 	"license": "MIT",
-	"version": "0.0.3",
+	"version": "0.0.4",
+	"scripts": {
+		"build": "vite build",
+		"typecheck": "tsc --noEmit",
+		"lint": "pnpx oxlint --max-warnings=100"
+	},
 	"dependencies": {
-		"esbuild": "^0.14.42",
-		"esbuild-stylus-loader": "^0.4.2"
+		"ora": "^9.4.0",
+		"typescript": "^6.0.3",
+		"vite": "^8.0.14"
 	},
-	"optionalDependencies": {
-		"clean-css": "^5.3.0",
-		"poststylus": "^1.0.1",
-		"stylus": "^0.58.1",
-		"terser": "^5.14.0"
+	"devDependencies": {
+		"@types/node": "^25.9.1"
 	},
+	"bin": {
+		"mefes": "dist/bin.js"
+	},
+	"files": [
+		"dist",
+		"template"
+	],
 	"type": "module",
-	"main": "index.js"
+	"main": "dist/index.js"
 }

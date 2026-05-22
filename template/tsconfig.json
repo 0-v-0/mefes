@@ -1,0 +1,25 @@
+{
+	"compilerOptions": {
+		"module": "esnext",
+		"lib": [
+			"es2023",
+			"dom"
+		],
+		"declaration": true,
+		"emitDeclarationOnly": true,
+		"noUnusedLocals": true,
+		"noUnusedParameters": true,
+		"noImplicitReturns": true,
+		"moduleResolution": "bundler",
+		"target": "es2023",
+		"useDefineForClassFields": true,
+		"skipLibCheck": true,
+		"types": [
+			"node",
+			"vite/client"
+		]
+	},
+	"include": [
+		"src"
+	],
+}

@@ -1,30 +1,9 @@
 # mefes
-Modern Esbuild FrontEnd Scaffold
+Modern Effective FrontEnd Scaffold
 
-一个基于 esbuild 的现代前端开发脚手架
+TS + UnoCSS + DaisyUI + Vite
 
-# Usage
-build.js
-```js
-const { buildCSS, compileTS, runTask, write } = require('mefes'),
-	ts = options => compileTS({ entryPoints: ['main.ts'], outdir: '.', ...options }),
-	css = options => buildCSS({
-		esbuild: {
-			entryPoints: ['main.styl'],
-			sourcemap: 'external',
-			outfile: 'main.css'
-		},
-		...options
-	}).then(write);
-
-runTask({
-	compile: () => Promise.all([css(), ts()]),
-	css,
-	ts,
-}, "compile");
-```
-
-build:
+## Usage
 ```sh
-node build
+npx mefes my-app
 ```
