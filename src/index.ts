@@ -1,8 +1,8 @@
-import { cp, mkdir, readdir, readFile, stat, writeFile, opendir } from 'node:fs/promises';
+import { cp, mkdir, opendir, readdir, readFile, stat, writeFile } from 'node:fs/promises';
 import { join, resolve } from 'node:path';
 import { exec } from 'node:child_process';
 import { promisify } from 'node:util';
-import ora, { type Ora } from 'ora';
+import ora from 'ora';
 
 const execAsync = promisify(exec);
 
@@ -161,9 +161,9 @@ async function installDependencies(targetDir: string): Promise<void> {
 
 function detectPackageManager(): string {
 	const userAgent = process.env.npm_config_user_agent ?? '';
-	if (userAgent.includes('yarn')) return 'yarn';
-	if (userAgent.includes('pnpm')) return 'pnpm';
-	if (userAgent.includes('bun')) return 'bun';
+	for (const manager of ['yarn', 'pnpm', 'bun']) {
+		if (userAgent.includes(manager)) return manager;
+	}
 	return 'npm';
 }
 
